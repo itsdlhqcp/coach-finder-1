@@ -16,6 +16,8 @@ const router = createRouter({
     {
       path: '/coaches/:id',
       component: CoachDetails,
+      // Adding this makes dynamic segment of path is passed as a prop of that name (in this case, id) into that component
+      props: true,
       children: [
         { path: 'contact', component: ContactCoach } // /coaches/c1/contact
       ]
