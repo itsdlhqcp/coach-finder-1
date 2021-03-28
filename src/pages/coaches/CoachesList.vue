@@ -1,8 +1,12 @@
 <template>
   <section>
+    <!-- change-filter is custom event emitted from CoahFilter component -->
+    <coach-filter @change-filter="setFilters"></coach-filter>
+  </section>
+  <section>
     <base-card>
       <div class="controls">
-        <base-button>Refresh</base-button>
+        <base-button mode="outline">Refresh</base-button>
         <!-- Adding link prop automatically sets it to true - including the prop with no value will imply true https://v3.vuejs.org/guide/component-props.html#passing-a-boolean -->
         <base-button link to="/register">Register as Coach</base-button>
       </div>
@@ -25,21 +29,49 @@
 
 <script>
 import CoachItem from '../../components/coaches/CoachItem.vue';
+import CoachFilter from '../../components/coaches/CoachFilter.vue';
 
 export default {
   components: {
-    CoachItem
+    CoachItem,
+    CoachFilter
+  },
+  data() {
+    return {
+      activeFilters: {
+        frontend: true,
+        backend: true,
+        career: true
+      }
+    };
   },
   computed: {
     filteredCoaches() {
       // first coaches is the namespace name, named in store/index.js, and the second (after slash) is getter name
-      return this.$store.getters['coaches/coaches']
+      const coaches = this.$store.getters['coaches/coaches'];
+      return coaches.filter(coach => {
+        if (this.activeFilters.frontend && coach.areas.includes('frontend')) {
+          return true;
+        }
+        if (this.activeFilters.backend && coach.areas.includes('backend')) {
+          return true;
+        }
+        if (this.activeFilters.career && coach.areas.includes('career')) {
+          return true;
+        }
+        return false;
+      });
     },
     hasCoaches() {
-      return this.$store.getters['coaches/hasCoaches']
+      return this.$store.getters['coaches/hasCoaches'];
+    },
+    methods: {
+      setFilters(updatedFilters) {
+        this.activeFilters = updatedFilters;
+      }
     }
   }
-}
+};
 </script>
 
 <style scoped>
