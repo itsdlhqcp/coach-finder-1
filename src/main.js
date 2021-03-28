@@ -12,7 +12,7 @@ const app = createApp(App);
 app.use(router);
 app.use(store);
 
-// Register lobal components
+// Register global components
 app.component('base-card', BaseCard);
 app.component('base-button', BaseButton);
 app.component('base-badge', BaseBadge);
