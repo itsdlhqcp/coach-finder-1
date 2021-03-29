@@ -8,7 +8,7 @@
       <div class="controls">
         <base-button mode="outline">Refresh</base-button>
         <!-- Adding link prop automatically sets it to true - including the prop with no value will imply true https://v3.vuejs.org/guide/component-props.html#passing-a-boolean -->
-        <base-button link to="/register">Register as Coach</base-button>
+        <base-button v-if="!isCoach" link to="/register">Register as Coach</base-button>
       </div>
       <ul v-if="hasCoaches">
         <coach-item
@@ -46,6 +46,9 @@ export default {
     };
   },
   computed: {
+    isCoach() {
+      return this.$store.getters['coaches/isCoach'];
+    },
     filteredCoaches() {
       // first coaches is the namespace name, named in store/index.js, and the second (after slash) is getter name
       const coaches = this.$store.getters['coaches/coaches'];
@@ -65,12 +68,12 @@ export default {
     hasCoaches() {
       return this.$store.getters['coaches/hasCoaches'];
     },
-    methods: {
-      setFilters(updatedFilters) {
-        this.activeFilters = updatedFilters;
-      }
+  },
+  methods: {
+    setFilters(updatedFilters) {
+      this.activeFilters = updatedFilters;
     }
-  }
+  },
 };
 </script>
 

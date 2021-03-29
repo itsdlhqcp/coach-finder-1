@@ -1,21 +1,16 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control">
-      <label for="firstName">First name</label>
-      <input type="text" id="firstName" v-model.trim="firstName" />
+      <label for="firstname">Firstname</label>
+      <input type="text" id="firstname" v-model.trim="firstName" />
     </div>
     <div class="form-control">
-      <label for="lastName">Last name</label>
-      <input type="text" id="lastName" v-model.trim="lastName" />
+      <label for="lastname">Lastname</label>
+      <input type="text" id="lastname" v-model.trim="lastName" />
     </div>
     <div class="form-control">
       <label for="description">Description</label>
-      <textarea id="description" rows="5" v-model.trim="description" />
-    </div>
-    <div class="form-control">
-      <label for="hourlyRate">Hourly rate</label>
-      <!-- Using number modifier to force conversion to number (though should happen automatically since type is number) -->
-      <input type="number" id="hourlyRate" v-model.number="rate" />
+      <textarea id="description" rows="5" v-model.trim="description"></textarea>
     </div>
     <div class="form-control">
       <h3>Areas of expertise</h3>
@@ -38,6 +33,8 @@
 
 <script>
 export default {
+  // emits option: make it clear we emit
+  emits: ['save-data'],
   data() {
     return {
       firstName: '',
@@ -56,6 +53,8 @@ export default {
         rate: this.rate,
         areas: this.areas
       };
+
+      this.$emit('save-data', formData);
     }
   }
 }
