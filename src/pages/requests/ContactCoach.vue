@@ -36,6 +36,15 @@ export default {
         return;
       }
 
+      // namespace (of module) name/action name
+      this.$store.dispatch('requests/contactCoach', {
+        email: this.email,
+        message: this.message,
+        // ContactCoach component is a child route of coach details, which has id parameter; can extract it
+        coachId: this.$route.params.id
+      });
+      // Replace makes it so can't go back to last page (unlike $router.push)
+      this.$router.replace('/coaches');
     },
   },
 };

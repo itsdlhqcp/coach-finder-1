@@ -3,11 +3,13 @@
 import { createStore } from 'vuex';
 
 import coachesModule from './modules/coaches/index.js';
+import requestsModule from './modules/requests/index.js';
 
 const store = createStore({
   modules: {
     // coaches is the namespace of coachesModule (namespace is set to true in module, so have to prepend actions, getters, etc., with this name to use them)
-    coaches: coachesModule
+    coaches: coachesModule,
+    requests: requestsModule
   },
   state() {
     return {
