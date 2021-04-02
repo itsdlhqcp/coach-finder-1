@@ -1,4 +1,8 @@
 <template>
+  <!-- 2 exclamation marks convert a string to a boolean -->
+  <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
+    <p>{{ error }}</p>
+  </base-dialog>
   <section>
     <!-- change-filter is custom event emitted from CoahFilter component -->
     <coach-filter @change-filter="setFilters"></coach-filter>
@@ -42,6 +46,7 @@ export default {
   data() {
     return {
       isLoading: false,
+      error: null,
       activeFilters: {
         frontend: true,
         backend: true,
@@ -82,8 +87,16 @@ export default {
     },
     async loadCoaches() {
       this.isLoading = true;
-      await this.$store.dispatch('coaches/loadCoaches');
+      try {
+        await this.$store.dispatch('coaches/loadCoaches');
+      } catch (error) {
+        this.error = error.message || 'Something went wrong!';
+      }
       this.isLoading = false;
+    },
+    handleError() {
+      // :show="" will receive a falsy value and thus will be converted to a Boolean false
+      this.error = null;
     }
   },
 };
