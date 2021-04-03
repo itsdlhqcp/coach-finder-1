@@ -1,6 +1,8 @@
 <template>
   <the-header></the-header>
   <router-view v-slot="slotProps">
+    <!-- out-in: First animate removal of existing page, then appearance of new page -->
+    <!-- Normally can have multiple root elements in Vue 3, but if you plan on wrapping components with transition, wrapped components must only have one root element (because transition must have only one child element) -->
     <transition name="route" mode="out-in">
       <component :is="slotProps.Component"></component>
     </transition>
