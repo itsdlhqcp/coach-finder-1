@@ -1,26 +1,28 @@
 <template>
-  <section>
-    <base-card>
-      <h2>{{ fullName }}</h2>
-      <h3>${{ rate }}/hour</h3>
-    </base-card>
-  </section>
-  <section>
-    <base-card>
-      <header>
-        <h2>Interested? Reach out now!</h2>
-        <base-button link :to="contactLink">Contact</base-button>
-      </header>
-      <!-- Note: contact is a child route of this coach details route; won't be loaded to replace what was on screen previously, but it instead needs a new, separate router view within parent component, and child components (here, the contact route) will be loaded in this router view -->
-      <router-view></router-view>
-    </base-card>
-  </section>
-  <section>
-    <base-card>
-      <base-badge v-for="area in areas" :key="area" :type="area" :title="area"></base-badge>
-      <p>{{ description }}</p>
-    </base-card>
-  </section>
+  <div>
+    <section>
+      <base-card>
+        <h2>{{ fullName }}</h2>
+        <h3>${{ rate }}/hour</h3>
+      </base-card>
+    </section>
+    <section>
+      <base-card>
+        <header>
+          <h2>Interested? Reach out now!</h2>
+          <base-button link :to="contactLink">Contact</base-button>
+        </header>
+        <!-- Note: contact is a child route of this coach details route; won't be loaded to replace what was on screen previously, but it instead needs a new, separate router view within parent component, and child components (here, the contact route) will be loaded in this router view -->
+        <router-view></router-view>
+      </base-card>
+    </section>
+    <section>
+      <base-card>
+        <base-badge v-for="area in areas" :key="area" :type="area" :title="area"></base-badge>
+        <p>{{ description }}</p>
+      </base-card>
+    </section>
+  </div>
 </template>
 
 <script>
