@@ -4,7 +4,7 @@
     <p>{{ error }}</p>
   </base-dialog>
   <section>
-    <!-- change-filter is custom event emitted from CoahFilter component -->
+    <!-- change-filter is custom event emitted from CoachFilter component -->
     <coach-filter @change-filter="setFilters"></coach-filter>
   </section>
   <section>
