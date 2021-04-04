@@ -1,7 +1,11 @@
 <template>
   <div>
     <!-- 2 exclamation marks convert a string to a boolean -->
-    <base-dialog :show="!!error" title="An error occurred!" @close="handleError">
+    <base-dialog
+      :show="!!error"
+      title="An error occurred!"
+      @close="handleError"
+    >
       <p>{{ error }}</p>
     </base-dialog>
     <section>
@@ -11,9 +15,17 @@
     <section>
       <base-card>
         <div class="controls">
-          <base-button mode="outline" @click="loadCoaches(true)">Refresh</base-button>
+          <base-button mode="outline" @click="loadCoaches(true)"
+            >Refresh</base-button
+          >
+          <base-button link to="/auth" v-if="!isLoggedIn">Login</base-button>
           <!-- Adding link prop automatically sets it to true - including the prop with no value will imply true https://v3.vuejs.org/guide/component-props.html#passing-a-boolean -->
-          <base-button v-if="!isCoach && !isLoading" link to="/register">Register as Coach</base-button>
+          <base-button
+            v-if="isLoggedIn && !isCoach && !isLoading"
+            link
+            to="/register"
+            >Register as Coach</base-button
+          >
         </div>
         <div v-if="isLoading">
           <base-spinner></base-spinner>
@@ -57,6 +69,9 @@ export default {
     };
   },
   computed: {
+    isLoggedIn() {
+      return this.$store.getters.isAuthenticated;
+    },
     isCoach() {
       return this.$store.getters['coaches/isCoach'];
     },
@@ -78,7 +93,7 @@ export default {
     },
     hasCoaches() {
       return !this.isLoading && this.$store.getters['coaches/hasCoaches'];
-    },
+    }
   },
   created() {
     this.loadCoaches();
@@ -90,7 +105,9 @@ export default {
     async loadCoaches(refresh = false) {
       this.isLoading = true;
       try {
-        await this.$store.dispatch('coaches/loadCoaches', {forceRefresh: refresh});
+        await this.$store.dispatch('coaches/loadCoaches', {
+          forceRefresh: refresh
+        });
       } catch (error) {
         this.error = error.message || 'Something went wrong!';
       }
@@ -100,7 +117,7 @@ export default {
       // :show="" will receive a falsy value and thus will be converted to a Boolean false
       this.error = null;
     }
-  },
+  }
 };
 </script>
 
