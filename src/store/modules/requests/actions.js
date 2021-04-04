@@ -31,8 +31,9 @@ export default {
   },
   async fetchRequests(context) {
     const coachId = context.rootGetters.userId;
+    const token = context.rootGetters.token;
     const response = await fetch(
-      `https://vue3-http-3d6fb-default-rtdb.firebaseio.com/requests/${coachId}.json`
+      `https://vue3-http-3d6fb-default-rtdb.firebaseio.com/requests/${coachId}.json?auth=${token}`
     );
     const responseData = await response.json();
 

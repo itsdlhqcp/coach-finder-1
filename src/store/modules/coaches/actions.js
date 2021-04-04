@@ -10,8 +10,10 @@ export default {
       areas: data.areas
     };
 
+    const token = context.rootGetters.token;
+
     const response = await fetch(
-      `https://vue3-http-3d6fb-default-rtdb.firebaseio.com/coaches/${userId}.json`,
+      `https://vue3-http-3d6fb-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`,
       {
         // PUT: data will be overwritten if it existed, or created if it didn't exist
         method: 'PUT',
