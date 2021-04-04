@@ -58,4 +58,8 @@ body {
   opacity: 1;
   transform: translateY(0);
 }
+
+button {
+  outline: none;
+}
 </style>

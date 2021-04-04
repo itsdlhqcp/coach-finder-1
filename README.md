@@ -1,10 +1,12 @@
 # coach-finder
 
-A coach finder web app built with Vue 3.
+A single-page "web development coach finder" web app built with Vue 3.
 
 Vuex is used for managing data/state.
 
-Firebase is used for the backend.
+Firebase is used as the backend server.
+
+Uses authentication, with signup/login/logout.
 
 Course project for Maximilian Schwarzmüller's [Vue - The Complete Guide](https://www.udemy.com/course/vuejs-2-the-complete-guide/).
 
