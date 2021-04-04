@@ -14,7 +14,12 @@
         </div>
         <div class="form-control">
           <label for="password">Password</label>
-          <input type="password" id="password" v-model.trim="password" />
+          <input
+            type="password"
+            id="password"
+            class="password"
+            v-model.trim="password"
+          />
         </div>
         <p v-if="!formIsValid">
           Please enter a valid email and password (must be at least six
@@ -125,6 +130,7 @@ textarea {
   font: inherit;
   border: 1px solid #ccc;
   padding: 0.15rem;
+  margin-bottom: 1em;
 }
 
 input:focus,
@@ -132,5 +138,9 @@ textarea:focus {
   border-color: #3d008d;
   background-color: #faf6ff;
   outline: none;
+}
+
+input.password {
+  margin-bottom: 1.5em;
 }
 </style>
