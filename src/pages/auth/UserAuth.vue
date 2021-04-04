@@ -16,11 +16,14 @@
           <label for="password">Password</label>
           <input type="password" id="password" v-model.trim="password" />
         </div>
-        <p
-          v-if="!formIsValid"
-        >Please enter a valid email and password (must be at least six characters long).</p>
+        <p v-if="!formIsValid">
+          Please enter a valid email and password (must be at least six
+          characters long).
+        </p>
         <base-button>{{ submitButtonCaption }}</base-button>
-        <base-button type="button" mode="flat" @click="switchAuthMode">{{ switchModeButtonCaption }}</base-button>
+        <base-button type="button" mode="flat" @click="switchAuthMode">{{
+          switchModeButtonCaption
+        }}</base-button>
       </form>
     </base-card>
   </div>
@@ -52,7 +55,7 @@ export default {
       } else {
         return 'Log In Instead';
       }
-    },
+    }
   },
   methods: {
     async submitForm() {
@@ -68,17 +71,19 @@ export default {
 
       this.isLoading = true;
 
+      const actionPayload = {
+        email: this.email,
+        password: this.password
+      };
+
       try {
         if (this.mode === 'login') {
-        // ...
+          await this.$store.dispatch('login', actionPayload);
         } else {
-          await this.$store.dispatch('signup', {
-            email: this.email,
-            password: this.password
-          })
+          await this.$store.dispatch('signup', actionPayload);
         }
       } catch (error) {
-        this.error = error.message || 'Failed to authenticate.'
+        this.error = error.message || 'Failed to authenticate.';
       }
 
       this.isLoading = false;
@@ -93,7 +98,7 @@ export default {
     handleError() {
       this.error = null;
     }
-  },
+  }
 };
 </script>
 
