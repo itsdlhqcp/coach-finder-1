@@ -1,4 +1,8 @@
-// Base components are those components that don’t hold any logic about the current app state. They are simple, pure components that we reuse across the whole app to build its UI. To distinguish between Base components and other components, we should begin their names with a specific prefix, such as Base (for example: BaseTextInput, BaseButton, BaseIcon, etc.)
+// Base components are those components that don’t hold any logic about the
+current app state. They are simple, pure components that we reuse across the
+whole app to build its UI. To distinguish between Base components and other
+components, we should begin their names with a specific prefix, such as Base
+(for example: BaseTextInput, BaseButton, BaseIcon, etc.)
 <template>
   <button v-if="!link" :class="mode">
     <slot></slot>
@@ -27,7 +31,7 @@ export default {
       default: '/'
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -36,8 +40,8 @@ a {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
   font: inherit;
-  background-color: #3a0061;
-  border: 1px solid #3a0061;
+  background-color: #25003d;
+  border: 1px solid #25003d;
   color: white;
   cursor: pointer;
   border-radius: 30px;
@@ -49,8 +53,8 @@ a:hover,
 a:active,
 button:hover,
 button:active {
-  background-color: #270041;
-  border-color: #270041;
+  background-color: #12011d;
+  border-color: #12011d;
 }
 
 .flat {
