@@ -42,6 +42,7 @@ export default {
     }
 
     // Multiplying by 1000 to convert from seconds to milliseconds
+    // expiresIn automatically added by Firebase (is 3600 seconds [one hour] by default)
     const expiresIn = +responseData.expiresIn * 1000;
     // const expiresIn = 10000;
     const expirationDate = new Date().getTime() + expiresIn;
