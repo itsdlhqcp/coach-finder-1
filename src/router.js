@@ -37,7 +37,11 @@ const router = createRouter({
       meta: { requiresAuth: true }
     },
     // Messages received through coach contact form
-    { path: '/requests', component: RequestsReceived },
+    {
+      path: '/requests',
+      component: RequestsReceived,
+      meta: { requiresAuth: true }
+    },
     { path: '/auth', component: UserAuth, meta: { requiresUnauth: true } },
     { path: '/:notFound(.*)', component: NotFound }
   ]
