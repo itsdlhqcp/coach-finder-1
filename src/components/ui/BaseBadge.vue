@@ -9,10 +9,10 @@ export default {
   props: ['type', 'title'],
   computed: {
     text() {
-      return this.title.toUpperCase()
+      return this.title.toUpperCase();
     }
   }
-}
+};
 </script>
 
 <style scoped>
@@ -22,7 +22,7 @@ export default {
   border-radius: 30px;
   padding: 0.5rem 1.5rem;
   display: inline-block;
-  margin-right: 0.5rem;
+  margin: 0 1rem 1rem 0;
 }
 
 .frontend {

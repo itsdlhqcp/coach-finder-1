@@ -50,6 +50,15 @@ body {
   margin: 0;
 }
 
+h2 {
+  margin-top: 0;
+  font-size: 2em;
+}
+
+h3 {
+  margin-bottom: 0;
+}
+
 .route-enter-from {
   opacity: 0;
   transform: translateY(-30px);
