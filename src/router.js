@@ -9,7 +9,7 @@ import NotFound from './pages/NotFound.vue';
 // import UserAuth from './pages/auth/UserAuth.vue';
 import store from './store/index.js';
 
-// Lazy loading (note: async components shouldn't be used for routes. This is format suggested by Vue Router docs https://next.router.vuejs.org/guide/advanced/lazy-loading.html)
+// Lazy loading with dynamic import (note: async components shouldn't be used for routes. This is format suggested by Vue Router docs https://next.router.vuejs.org/guide/advanced/lazy-loading.html). Also see https://www.youtube.com/watch?v=93R57sLATM4&ab_channel=Cod%C3%BACommunity (dynamic import is an ES2020 feature)
 const CoachDetails = () => import('./pages/coaches/CoachDetails.vue');
 const CoachRegistration = () => import('./pages/coaches/CoachRegistration.vue');
 const ContactCoach = () => import('./pages/requests/ContactCoach.vue');
