@@ -1,7 +1,7 @@
 <template>
   <form @submit.prevent="submitForm">
     <div class="form-control">
-      <label for="email">Your E-Mail</label>
+      <label for="email">Your Email</label>
       <input type="email" id="email" v-model.trim="email" />
     </div>
     <div class="form-control">
@@ -54,7 +54,7 @@ export default {
 
 <style scoped>
 form {
-  margin: 1rem;
+  margin: 2rem 0 0;
   border: 1px solid #ccc;
   border-radius: 12px;
   padding: 1rem;
