@@ -1,5 +1,6 @@
 <template>
   <div>
+    <go-back />
     <section>
       <base-card>
         <h2>{{ fullName }}</h2>
