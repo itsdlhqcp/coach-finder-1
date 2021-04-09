@@ -19,4 +19,10 @@ export default {
   margin: 2rem auto 0;
   max-width: 40rem;
 }
+
+@media (min-width: 768px) {
+  .go-back {
+    max-width: 90%;
+  }
+}
 </style>
