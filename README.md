@@ -6,7 +6,7 @@ A single-page "web development coach finder" web app built with Vue 3.
 
 Vuex is used for managing data/state.
 
-Firebase is used as the backend server.
+Firebase is used as the backend server/database.
 
 Uses authentication, with signup/login/logout.
 
