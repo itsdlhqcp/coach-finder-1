@@ -2,6 +2,8 @@
 
 A single-page "web development coach finder" web app built with Vue 3.
 
+### View live: https://vue3-http-3d6fb.web.app
+
 Vuex is used for managing data/state.
 
 Firebase is used as the backend server.
