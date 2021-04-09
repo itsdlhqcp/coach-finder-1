@@ -1,6 +1,5 @@
 <template>
   <div>
-    <go-back />
     <section>
       <base-card>
         <h2>{{ fullName }}</h2>
@@ -22,7 +21,9 @@
       <base-card>
         <header>
           <h2 class="contact-intro">Interested? Reach out now!</h2>
-          <base-button link :to="contactLink">Contact</base-button>
+          <base-button v-if="buttonIsVisible" link :to="contactLink"
+            >Contact</base-button
+          >
         </header>
         <!-- Note: contact is a child route of this coach details route; won't be loaded to replace what was on screen previously, but it instead needs a new, separate router view within parent component, and child components (here, the contact route) will be loaded in this router view -->
         <router-view></router-view>
@@ -54,7 +55,16 @@ export default {
       return this.selectedCoach.description;
     },
     contactLink() {
-      return this.$route.path + '/contact';
+      if (this.$route.params) {
+        return this.$route.path + '/contact';
+      }
+      return this.$route.path + '/' + this.id + '/contact';
+    },
+    buttonIsVisible() {
+      if (this.$route.path.includes('contact')) {
+        return false;
+      }
+      return true;
     }
   },
   created() {
