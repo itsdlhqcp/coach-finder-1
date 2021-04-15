@@ -19,7 +19,7 @@
             >Refresh</base-button
           >
           <base-button link to="/auth?redirect=register" v-if="!isLoggedIn"
-            >Login to Register as Coach</base-button
+            >Log in to Register</base-button
           >
           <!-- Adding link prop automatically sets it to true - including the prop with no value will imply true https://v3.vuejs.org/guide/component-props.html#passing-a-boolean -->
           <base-button
